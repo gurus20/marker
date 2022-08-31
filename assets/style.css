@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 14.5px;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.b-green {
+  background: #42b175;
+  color: white;
+}
+
+.c-green {
+  color: #59ce8f;
+}
+
+.b-green:hover {
+  color: white;
+}
+
+.c-dark {
+  color: #222222;
+}
+
+.b-dark {
+  background-color: #222222;
+  color: white;
+}
+
+.rounded-10 {
+  border-radius: 20px;
+}
+
+.social-media .social-icon {
+  border: 1px solid #59ce8f;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #59ce8f;
+}
+
+#login-form {
+  min-height: 450px;
+}
+
+.home-hero h1 {
+  /* text-shadow: -3px -2px 0px rgb(226, 226, 226); */
+  border-bottom: 4px solid rgb(214, 214, 214);
+  width: fit-content;
+}
+
+.bor-bottom {
+    border-bottom: 4px solid rgb(214, 214, 214);
+    width: fit-content;
+}
+
+.form-float .float-wrap input {
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  border: 2px solid #999;
+}
+
+.form-float .float-wrap {
+  position: relative;
+}
+
+.form-float .dropdown-input {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  border-radius: 0 0 6px 6px;
+  border: 1px solid rgb(228, 228, 228);
+  border-top: none;
+  z-index: 1;
+  margin-top: -15px;
+}
+
+.form-float .float-wrap label {
+  font-style: italic;
+  font-size: 13px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #999;
+  transition: 0.5s;
+  pointer-events: none;
+  background: white;
+}
+
+.form-float input:focus ~ label,
+.form-float input:valid ~ label {
+  top: -7px;
+  left: 10px;
+  color: #42b175;
+}
+
+/* #tag-dropdown:hover {
+  display: block;
+}  */
+/* 
+
+#tag_inp:focus ~ #tag-dropdown, #tag-dropdown:hover {
+  display: block;
+} */
+
+.tag {
+    background: white;
+    color: #999;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid #42b175;
+    border-radius: 20px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+}
+
+.tag:hover {
+    color: #42b175;
+}

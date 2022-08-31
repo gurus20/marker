@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marker</title>
+
+    <!-- Bootstrap-min-css-v5.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/41f630671b.js" crossorigin="anonymous"></script>
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="container-fluid border-bottom shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center" style=" min-height: 60px;">
+            <div class="logo">
+                <h4 class="fw-bold mb-0 c-green">Marker <i class="fa-solid fa-pen"></i></h4>
+            </div>
+            <ul class="nav">
+                <li class="nav-item d-flex align-items-center">
+                    <a href="#" class="text-secondary">Help <i class="fa-solid fa-circle-question fs-6"></i></a>
+                </li>
+                <li class="nav-item d-flex align-items-center ms-4">
+                    <a href="#" class="fst-italic btn btn-outline-danger btn-sm px-3">Logout <i
+                            class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+
+        <div class="row" style="height: calc(100vh -  61px);">
+            <div class="col-12 col-md-6 p-md-5 p-2">
+                <p class="display-6 fw-bold pb-3 c-dark">Paste your Link & Add Tag, Thats all</p>
+
+                <form id="create_bookmark_form" action="" class="form-float" data-remote=true>
+                    <div class="float-wrap">
+                        <!-- this input for links -->
+                        <input type="url" id="link" name="link" required>
+                        <label>&nbsp;Enter your Link or Url&nbsp;</label>
+                    </div>
+
+
+                    <div class="float-wrap float-dropdown">
+                        <input type="text" name="tag_inp" id="tag_inp" name="tag_inp" required class="mb-3">
+                        <label>&nbsp;Enter Tag&nbsp;</label>
+                        <div class="dropdown-input d-none" id="tag-dropdown">
+                            <!-- this input only for UI handling -->
+                            <ol id="tags_list_ul" class="nav flex-column p-3 px-4">
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="djnago" onclick="select_tag(this)">django</p>
+                                </li>
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="python" onclick="select_tag(this)">python</p>
+                                </li>
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="ruby" onclick="select_tag(this)">ruby</p>
+                                </li>
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="react" onclick="select_tag(this)">react</p>
+                                </li>
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="node" onclick="select_tag(this)">node</p>
+                                </li>
+                                <li class="nav-item">
+                                    <p class="nav-link p-0 c-green" id="javascript" onclick="select_tag(this)">javascript</p>
+                                </li>
+                            </ol>
+
+                        </div>
+                    </div>
+
+                    <!-- this input for tags_list -->
+                    <input type="hidden" value="" id="tags_list">
+
+                    <div id="taglist_box"
+                        class="taglist row justify-content-start rounded-3 border d-none p-2 m-0 mb-3">
+
+                    </div>
+                    <input type="submit" value="Create Mark" class="btn b-green w-100 py-2"> <br> <br>
+
+                </form>
+            </div>
+            <div class="col-12 col-md-6 p-md-5 p-2 b-dark">
+                <p class="h3 fw-bold pb-3 fst-italic bor-bottom mb-4">My Marks</p>
+
+                <ol>
+                    <li class="mb-3">
+                        <a class="text-light" href="#">Why javasript is Superior.</a><br>
+                        <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3">
+                            <p class="tag m-2" style="cursor: pointer;">Javscript<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                            <p class="tag m-2" style="cursor: pointer;">Jquery<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                        </div>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-light" href="#">Never Underestimate the power of IronMan.</a> <br>
+                        <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3">
+                            <p class="tag m-2" style="cursor: pointer;">IronMan<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                            <p class="tag m-2" style="cursor: pointer;">TonyStark<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                            <p class="tag m-2" style="cursor: pointer;">Avengers<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                        </div>
+                    </li>
+                    <li class="mb-2">
+                        <a class="text-light" href="#">Who is more Hot Black Widow or Wanda maximoff</a><br>
+                        <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3">
+                            <p class="tag m-2" style="cursor: pointer;">BlackWidow<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                            <p class="tag m-2" style="cursor: pointer;">WnadaMaximoff<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                        </div>
+                    </li>
+                    </0l>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var tags_list = '';
+        var selected_tag = 'none';
+
+        function dropdown_search() {
+            $('#tag-dropdown').removeClass('d-none');
+            var tag_input, filter, tags_list_li, p, txtValue;
+
+            tag_input = $('#tag_inp');
+            filter = tag_input.val().toLowerCase();
+            tags_list_li = $('#tags_list_ul li');
+
+            for (var i = 0; i < tags_list_li.length; i++) {
+                p = $(tags_list_li[i]).find('p')[0];
+
+                txtValue = $(p).text();
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    $(tags_list_li[i]).removeClass('d-none');
+                }
+                else {
+                    $(tags_list_li[i]).addClass('d-none');
+                }
+            }
+        }
+
+        function select_tag(obj) {
+            var p = $('#' + obj.id);
+            selected_tag = p.text();
+            add_tag(selected_tag);
+            $('#tag-dropdown').addClass('d-none');
+        }
+
+        function add_tag(tag_value) {
+            var remove_tag_icon = $('<i/>', {
+                class: 'fa-solid fa-circle-xmark mt-1 ms-2'
+            });
+
+            var tag = $('<p/>', {
+                class: 'tag m-1',
+                text: tag_value,
+                onclick: 'remove_tag(this)',
+            });
+
+            tag.attr('id', 'tagid_' + tag_value);
+
+            tags_list += (tag_value + ',');
+            $('#tags_list').val(tags_list);
+
+            tag.css('cursor', 'pointer');
+            tag.append(remove_tag_icon);
+
+            $('#taglist_box').append(tag);
+            $('#taglist_box').removeClass('d-none');
+
+            $('#tag_inp').val('');
+        }
+
+        $('#tag_inp').on('input', function (e){
+            dropdown_search();
+        });
+
+        // $('#tag_inp').on('mousedown', function (e) {
+        //     $('#tag-dropdown').addClass('d-none');
+        // });
+
+        $('#tag_inp').on('keydown', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var tag_inp = $('#tag_inp').val();
+                add_tag(tag_inp);
+                $('#tag-dropdown').addClass('d-none');
+                return false;
+            }
+        });
+
+        function remove_tag(obj) {
+            var data = $('#' + obj.id);
+            tags_list = tags_list.replace((data.text() + ','), '');
+            $('#tags_list').val(tags_list);
+            data.remove();
+
+            if (tags_list === '') {
+                $('#taglist_box').addClass('d-none');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
