@@ -146,6 +146,9 @@
     <script>
         var tags_list = '';
         var selected_tag = 'none';
+        function hideDropdown(){
+            $('#tag-dropdown').addClass('d-none');
+        }
 
         function dropdown_search() {
             $('#tag-dropdown').removeClass('d-none');
@@ -201,7 +204,10 @@
         }
 
         $('#tag_inp').on('input', function (e){
-            dropdown_search();
+              if($(this).val() != '')
+                dropdown_search();
+            else
+                hideDropdown();
         });
 
         // $('#tag_inp').on('mousedown', function (e) {
