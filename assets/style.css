@@ -106,14 +106,24 @@ a {
   color: #42b175;
 }
 
-/* #tag-dropdown:hover {
-  display: block;
-}  */
-/* 
+#tags_list_ul li p {
+  cursor: pointer;
+  margin: 0;
+}
 
-#tag_inp:focus ~ #tag-dropdown, #tag-dropdown:hover {
-  display: block;
+/* #tags_list_ul li:first-child{
+  background: #eee;
 } */
+
+#tags_list_ul li{
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+#tags_list_ul li:hover {
+  background: #eee;
+}
 
 .tag {
     background: white;

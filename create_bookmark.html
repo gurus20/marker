@@ -54,8 +54,9 @@
     <div class="container-fluid">
 
         <div class="row" style="height: calc(100vh -  61px);">
-            <div class="col-12 col-md-6 p-md-5 p-2">
-                <p class="display-6 fw-bold pb-3 c-dark">Paste your Link & Add Tag, Thats all</p>
+            <div class="col-12 col-md-6 p-md-5 p-4">
+                <p class="display-6 fw-bold c-dark mb-2">Create A Mark</p>
+                <p class="h5 fw-bold pb-3 text-secondary">Paste your Link & Add Tag, Thats all</p>
 
                 <form id="create_bookmark_form" action="" class="form-float" data-remote=true>
                     <div class="float-wrap">
@@ -64,30 +65,29 @@
                         <label>&nbsp;Enter your Link or Url&nbsp;</label>
                     </div>
 
-
                     <div class="float-wrap float-dropdown">
                         <input type="text" name="tag_inp" id="tag_inp" name="tag_inp" required class="mb-3">
                         <label>&nbsp;Enter Tag&nbsp;</label>
-                        <div class="dropdown-input d-none" id="tag-dropdown">
+                        <div class="dropdown-input" id="tag-dropdown">
                             <!-- this input only for UI handling -->
-                            <ol id="tags_list_ul" class="nav flex-column p-3 px-4">
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="djnago" onclick="select_tag(this)">django</p>
+                            <ol id="tags_list_ul" class="nav flex-column">
+                                <li class="nav-item" id="djnago" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">Django</p>
                                 </li>
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="python" onclick="select_tag(this)">python</p>
+                                <li class="nav-item" id="python" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">Python</p>
                                 </li>
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="ruby" onclick="select_tag(this)">ruby</p>
+                                <li class="nav-item" id="ruby" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">Ruby</p>
                                 </li>
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="react" onclick="select_tag(this)">react</p>
+                                <li class="nav-item" id="react" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">React</p>
                                 </li>
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="node" onclick="select_tag(this)">node</p>
+                                <li class="nav-item" id="node" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">Node</p>
                                 </li>
-                                <li class="nav-item">
-                                    <p class="nav-link p-0 c-green" id="javascript" onclick="select_tag(this)">javascript</p>
+                                <li class="nav-item" id="javascript" onclick="select_tag(this)">
+                                    <p class="nav-link p-0 c-green">Javascript</p>
                                 </li>
                             </ol>
 
@@ -97,15 +97,13 @@
                     <!-- this input for tags_list -->
                     <input type="hidden" value="" id="tags_list">
 
-                    <div id="taglist_box"
-                        class="taglist row justify-content-start rounded-3 border d-none p-2 m-0 mb-3">
-
+                    <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3 d-none">
                     </div>
-                    <input type="submit" value="Create Mark" class="btn b-green w-100 py-2"> <br> <br>
+                    <input type="submit" value="Create Mark" class="btn b-green w-100 py-2 mt-3"> <br> <br>
 
                 </form>
             </div>
-            <div class="col-12 col-md-6 p-md-5 p-2 b-dark">
+            <div class="col-12 col-md-6 p-md-5 p-4 b-dark">
                 <p class="h3 fw-bold pb-3 fst-italic bor-bottom mb-4">My Marks</p>
 
                 <ol>
@@ -130,11 +128,13 @@
                         </div>
                     </li>
                     <li class="mb-2">
-                        <a class="text-light" href="#">Who is more Hot Black Widow or Wanda maximoff</a><br>
+                        <a class="text-light" href="#">what the hulk couldn't smash.</a><br>
                         <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3">
                             <p class="tag m-2" style="cursor: pointer;">BlackWidow<i
                                     class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
-                            <p class="tag m-2" style="cursor: pointer;">WnadaMaximoff<i
+                            <p class="tag m-2" style="cursor: pointer;">Hulk<i
+                                    class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
+                            <p class="tag m-2" style="cursor: pointer;">Smash<i
                                     class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
                         </div>
                     </li>
@@ -146,9 +146,10 @@
     <script>
         var tags_list = '';
         var selected_tag = 'none';
+        $('#tag-dropdown').hide();
 
         function dropdown_search() {
-            $('#tag-dropdown').removeClass('d-none');
+            $('#tag-dropdown').show();
             var tag_input, filter, tags_list_li, p, txtValue;
 
             tag_input = $('#tag_inp');
@@ -171,8 +172,9 @@
         function select_tag(obj) {
             var p = $('#' + obj.id);
             selected_tag = p.text();
+            selected_tag = selected_tag.trim();
             add_tag(selected_tag);
-            $('#tag-dropdown').addClass('d-none');
+            $('#tag-dropdown').hide();
         }
 
         function add_tag(tag_value) {
@@ -200,24 +202,6 @@
             $('#tag_inp').val('');
         }
 
-        $('#tag_inp').on('input', function (e){
-            dropdown_search();
-        });
-
-        // $('#tag_inp').on('mousedown', function (e) {
-        //     $('#tag-dropdown').addClass('d-none');
-        // });
-
-        $('#tag_inp').on('keydown', function (e) {
-            if (e.which == 13) {
-                e.preventDefault();
-                var tag_inp = $('#tag_inp').val();
-                add_tag(tag_inp);
-                $('#tag-dropdown').addClass('d-none');
-                return false;
-            }
-        });
-
         function remove_tag(obj) {
             var data = $('#' + obj.id);
             tags_list = tags_list.replace((data.text() + ','), '');
@@ -228,6 +212,75 @@
                 $('#taglist_box').addClass('d-none');
             }
         }
+
+        $('#tag_inp').on('input', function (e) {
+            dropdown_search();
+        });
+
+        $(window).on('keydown', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var tag_inp = $('#tag_inp').val();
+                add_tag(tag_inp);
+                $('#tag-dropdown').hide();
+                return false;
+            }
+
+            if (e.which === 40) {
+                if (liSelected) {
+                    liSelected.removeClass('background');
+                    next = liSelected.next();
+                    if (next.length > 0) {
+                        liSelected = next.addClass('background');
+                        selected = next.text();
+
+                    } else {
+                        liSelected = li.eq(0).addClass('background');
+                        selected = li.eq(0).text();
+                    }
+                } else {
+                    liSelected = li.eq(0).addClass('background');
+                    selected = li.eq(0).text();
+                }
+            } else if (e.which === 38) {
+                if (liSelected) {
+                    liSelected.removeClass('background');
+                    next = liSelected.prev();
+                    if (next.length > 0) {
+                        liSelected = next.addClass('background');
+                        selected = next.text();
+
+                    } else {
+
+                        liSelected = li.last().addClass('background');
+                        selected = li.last().text()
+                    }
+                } else {
+
+                    liSelected = li.last().addClass('background');
+                    selected = li.last().text()
+                }
+            }
+            console.log(selected)
+        });
+
+
+        });
+
+
+
+        $('#tag-dropdown').mouseover(function () {
+            $('#tag-dropdown').show();
+        }).blur(function () {
+            $('#tag-dropdown').hide();
+        });
+
+        $(document).click(function () {
+            $('#tag-dropdown').hide();
+        });
+
+
+
     </script>
 
 </body>
