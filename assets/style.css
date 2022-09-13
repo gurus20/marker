@@ -115,6 +115,14 @@ a {
   background: #eee;
 } */
 
+.selected {
+  background: #42b175;
+}
+
+.selected p {
+  color: #ffffff;
+}
+
 #tags_list_ul li{
   padding: 10px 20px;
   display: flex;

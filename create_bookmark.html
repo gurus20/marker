@@ -21,11 +21,17 @@
     <!-- Ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- jQUERY -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <link rel="stylesheet" href="assets/style.css">
 
-    <!-- Fonts -->
+    <!-- Fonts -->  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -70,7 +76,7 @@
                         <label>&nbsp;Enter Tag&nbsp;</label>
                         <div class="dropdown-input" id="tag-dropdown">
                             <!-- this input only for UI handling -->
-                            <ol id="tags_list_ul" class="nav flex-column">
+                            <ul id="tags_list_ul" class="nav flex-column">
                                 <li class="nav-item" id="djnago" onclick="select_tag(this)">
                                     <p class="nav-link p-0 c-green">Django</p>
                                 </li>
@@ -89,7 +95,7 @@
                                 <li class="nav-item" id="javascript" onclick="select_tag(this)">
                                     <p class="nav-link p-0 c-green">Javascript</p>
                                 </li>
-                            </ol>
+                            </ul>
 
                         </div>
                     </div>
@@ -128,7 +134,7 @@
                         </div>
                     </li>
                     <li class="mb-2">
-                        <a class="text-light" href="#">what the hulk couldn't smash.</a><br>
+                        <a class="text-light" href="#">What the hulk couldn't smash.</a><br>
                         <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3">
                             <p class="tag m-2" style="cursor: pointer;">BlackWidow<i
                                     class="fa-solid fa-circle-xmark mt-1 ms-2"></i></p>
@@ -143,145 +149,7 @@
         </div>
     </div>
 
-    <script>
-        var tags_list = '';
-        var selected_tag = 'none';
-        $('#tag-dropdown').hide();
-
-        function dropdown_search() {
-            $('#tag-dropdown').show();
-            var tag_input, filter, tags_list_li, p, txtValue;
-
-            tag_input = $('#tag_inp');
-            filter = tag_input.val().toLowerCase();
-            tags_list_li = $('#tags_list_ul li');
-
-            for (var i = 0; i < tags_list_li.length; i++) {
-                p = $(tags_list_li[i]).find('p')[0];
-
-                txtValue = $(p).text();
-                if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                    $(tags_list_li[i]).removeClass('d-none');
-                }
-                else {
-                    $(tags_list_li[i]).addClass('d-none');
-                }
-            }
-        }
-
-        function select_tag(obj) {
-            var p = $('#' + obj.id);
-            selected_tag = p.text();
-            selected_tag = selected_tag.trim();
-            add_tag(selected_tag);
-            $('#tag-dropdown').hide();
-        }
-
-        function add_tag(tag_value) {
-            var remove_tag_icon = $('<i/>', {
-                class: 'fa-solid fa-circle-xmark mt-1 ms-2'
-            });
-
-            var tag = $('<p/>', {
-                class: 'tag m-1',
-                text: tag_value,
-                onclick: 'remove_tag(this)',
-            });
-
-            tag.attr('id', 'tagid_' + tag_value);
-
-            tags_list += (tag_value + ',');
-            $('#tags_list').val(tags_list);
-
-            tag.css('cursor', 'pointer');
-            tag.append(remove_tag_icon);
-
-            $('#taglist_box').append(tag);
-            $('#taglist_box').removeClass('d-none');
-
-            $('#tag_inp').val('');
-        }
-
-        function remove_tag(obj) {
-            var data = $('#' + obj.id);
-            tags_list = tags_list.replace((data.text() + ','), '');
-            $('#tags_list').val(tags_list);
-            data.remove();
-
-            if (tags_list === '') {
-                $('#taglist_box').addClass('d-none');
-            }
-        }
-
-        $('#tag_inp').on('input', function (e) {
-            dropdown_search();
-        });
-
-        $(window).on('keydown', function (e) {
-            if (e.which == 13) {
-                e.preventDefault();
-                var tag_inp = $('#tag_inp').val();
-                add_tag(tag_inp);
-                $('#tag-dropdown').hide();
-                return false;
-            }
-
-            if (e.which === 40) {
-                if (liSelected) {
-                    liSelected.removeClass('background');
-                    next = liSelected.next();
-                    if (next.length > 0) {
-                        liSelected = next.addClass('background');
-                        selected = next.text();
-
-                    } else {
-                        liSelected = li.eq(0).addClass('background');
-                        selected = li.eq(0).text();
-                    }
-                } else {
-                    liSelected = li.eq(0).addClass('background');
-                    selected = li.eq(0).text();
-                }
-            } else if (e.which === 38) {
-                if (liSelected) {
-                    liSelected.removeClass('background');
-                    next = liSelected.prev();
-                    if (next.length > 0) {
-                        liSelected = next.addClass('background');
-                        selected = next.text();
-
-                    } else {
-
-                        liSelected = li.last().addClass('background');
-                        selected = li.last().text()
-                    }
-                } else {
-
-                    liSelected = li.last().addClass('background');
-                    selected = li.last().text()
-                }
-            }
-            console.log(selected)
-        });
-
-
-        });
-
-
-
-        $('#tag-dropdown').mouseover(function () {
-            $('#tag-dropdown').show();
-        }).blur(function () {
-            $('#tag-dropdown').hide();
-        });
-
-        $(document).click(function () {
-            $('#tag-dropdown').hide();
-        });
-
-
-
-    </script>
+    <script src="assets/main.js"></script>
 
 </body>
 
