@@ -8,6 +8,7 @@
 
 a {
   text-decoration: none;
+  display: block;
 }
 
 .b-green {
@@ -50,14 +51,17 @@ a {
 }
 
 .home-hero h1 {
-  /* text-shadow: -3px -2px 0px rgb(226, 226, 226); */
   border-bottom: 4px solid rgb(214, 214, 214);
   width: fit-content;
 }
 
 .bor-bottom {
-    border-bottom: 4px solid rgb(214, 214, 214);
-    width: fit-content;
+  border-bottom: 4px solid rgb(214, 214, 214);
+  width: fit-content;
+}
+
+.form-float .float-wrap {
+  position: relative;
 }
 
 .form-float .float-wrap input {
@@ -70,21 +74,6 @@ a {
   border: none;
   border-radius: 6px;
   border: 2px solid #999;
-}
-
-.form-float .float-wrap {
-  position: relative;
-}
-
-.form-float .dropdown-input {
-  position: absolute;
-  background: #fff;
-  width: 100%;
-  border-radius: 0 0 6px 6px;
-  border: 1px solid rgb(228, 228, 228);
-  border-top: none;
-  z-index: 1;
-  margin-top: -15px;
 }
 
 .form-float .float-wrap label {
@@ -106,45 +95,79 @@ a {
   color: #42b175;
 }
 
-#tags_list_ul li p {
-  cursor: pointer;
-  margin: 0;
-}
-
-/* #tags_list_ul li:first-child{
-  background: #eee;
-} */
-
-.selected {
-  background: #42b175;
-}
-
-.selected p {
-  color: #ffffff;
-}
-
-#tags_list_ul li{
+.search-bar input {
+  border: none;
+  background: #f2f2f2;
   padding: 10px 20px;
+  border-radius: 24px;
+  max-width: 350px;
+}
+
+.search-bar button {
+  border: none;
+  background: transparent;
+  margin: -30px;
+}
+
+.mark-box {
+  background: #f2f2f2;
+  border-radius: 8px;
+}
+
+.mark-thumb {
+  border-radius: 8px;
+  background: blueviolet;
   display: flex;
   align-items: center;
-}
-
-#tags_list_ul li:hover {
-  background: #eee;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  color: white;
 }
 
 .tag {
-    background: white;
-    color: #999;
-    width: fit-content;
-    padding: 4px 10px;
-    border: 1px solid #42b175;
-    border-radius: 20px;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
+  background: white;
+  color: #999;
+  width: fit-content;
+  padding: 4px 10px;
+  border: 1px solid #42b175;
+  border-radius: 20px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .tag:hover {
-    color: #42b175;
+  color: #42b175;
+}
+
+.small-tag {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.small-tag a {
+  margin: 0 10px 0 0;
+}
+
+/* 
+------------------------
+AUTOCOMPLETE DROPDOWN
+------------------------
+*/
+.ui-menu .ui-menu-item div {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+.ui-menu .ui-menu-item .ui-state-active {
+  background: #e4e4e4;
+  color: black;
+  border: transparent;
+  padding: 9px 0 9px 11px;
+  border-left: 6px solid #42b175;
 }
