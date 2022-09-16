@@ -57,10 +57,16 @@
 
         <div class="row justify-content-center" style="height: calc(100vh -  61px);">
             <div class="col-12 col-md-8 p-md-5 p-4">
-                <p class="display-6 fw-bold c-dark mb-2 bor-bottom">Create A Mark</p>
+                <p class="display-6 fw-bold mb-2 c-green">Create A Mark</p>
                 <p class="h6 fw-bold mb-5 text-secondary">Paste your Link & Add Tag, Thats all</p>
 
-                <form id="create_bookmark_form" action="" class="form-float" data-remote=true>
+                <form id="create_bookmark_form" action="" class="form-float" method="post">
+                    <div class="float-wrap">
+                        <!-- this input for links -->
+                        <input type="text" id="title" name="title" required>
+                        <label>&nbsp;Enter Title&nbsp;</label>
+                    </div>
+
                     <div class="float-wrap">
                         <!-- this input for links -->
                         <input type="url" id="link" name="link" required>
@@ -68,13 +74,13 @@
                     </div>
 
                     <div class="float-wrap float-dropdown">
-                        <input type="text" name="tag_inp" id="tag_inp" name="tag_inp" required class="mb-3"
+                        <input type="text" name="tag_inp" id="tag_inp" name="tag_inp" class="mb-3"
                             minlength="3">
                         <label>&nbsp;Enter Tag&nbsp;</label>
                     </div>
 
                     <!-- this input for tags_list -->
-                    <input type="hidden" value="" id="tags_list">
+                    <input type="hidden" value="" id="tags_list" required>
 
                     <div id="taglist_box" class="taglist row justify-content-start p-2 m-0 mb-3 border rounded-3">
                     </div>
