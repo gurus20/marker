@@ -116,6 +116,7 @@ a {
 .mark-box {
   background: #f2f2f2;
   border-radius: 8px;
+  /* box-shadow: 0 0 12px #ccc; */
 }
 
 .mark-box small {
@@ -163,6 +164,11 @@ a {
   color: #999;
   margin-right: 5px;
   font-size: 13px;
+}
+
+.small-tag a:hover {
+  color: #42b175;
+  border: 1px solid #42b175;
 }
 
 
